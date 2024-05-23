@@ -1,0 +1,128 @@
+{
+  "id": "1e4c573f-fa56-466d-aade-9e0f07e373b5",
+  "prevId": "e876e774-53d0-40cc-897e-8faad943a849",
+  "version": "5",
+  "dialect": "pg",
+  "tables": {
+    "photos": {
+      "name": "photos",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "message_sid": {
+          "name": "message_sid",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "input_image": {
+          "name": "input_image",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "user_id": {
+          "name": "user_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "image_0": {
+          "name": "image_0",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "image_1": {
+          "name": "image_1",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "image_2": {
+          "name": "image_2",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "ik_input_image_id": {
+          "name": "ik_input_image_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "ik_input_image": {
+          "name": "ik_input_image",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "ik_image_0_id": {
+          "name": "ik_image_0_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "ik_image_0": {
+          "name": "ik_image_0",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "ik_image_1_id": {
+          "name": "ik_image_1_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "ik_image_1": {
+          "name": "ik_image_1",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "ik_image_2_id": {
+          "name": "ik_image_2_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "ik_image_2": {
+          "name": "ik_image_2",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "collage_url": {
+          "name": "collage_url",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    }
+  },
+  "enums": {},
+  "schemas": {},
+  "_meta": {
+    "columns": {},
+    "schemas": {},
+    "tables": {}
+  }
+}

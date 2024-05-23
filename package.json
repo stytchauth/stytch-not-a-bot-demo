@@ -1,0 +1,51 @@
+{
+  "name": "stytch-not-a-bot-demo",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "db:generate": "drizzle-kit generate:pg",
+    "db:push": "drizzle-kit push:pg",
+    "fly:deploy": "sh deploy.sh | sh"
+  },
+  "dependencies": {
+    "@headlessui/react": "^2.0.3",
+    "@heroicons/react": "^2.1.3",
+    "@neondatabase/serverless": "^0.9.1",
+    "@sentry/nextjs": "^7.114.0",
+    "@stytch/nextjs": "^19.0.0",
+    "@stytch/vanilla-js": "^4.11.0",
+    "@types/node": "20.12.7",
+    "@types/react": "18.3.1",
+    "@types/react-dom": "18.3.0",
+    "drizzle-orm": "^0.30.10",
+    "eslint": "8.57.0",
+    "eslint-config-next": "14.2.3",
+    "geist": "^1.3.0",
+    "imagekit": "^5.0.1",
+    "imagekitio-react": "^4.0.0",
+    "lodash": "^4.17.21",
+    "next": "14.2.3",
+    "next-share": "^0.27.0",
+    "prettier": "^3.2.5",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "replicate": "^0.29.1",
+    "stytch": "^10.15.1",
+    "typescript": "5.4.5"
+  },
+  "devDependencies": {
+    "@flydotio/dockerfile": "^0.5.7",
+    "@tailwindcss/forms": "^0.5.7",
+    "@types/lodash": "^4.17.0",
+    "autoprefixer": "^10.4.19",
+    "dotenv": "^16.4.5",
+    "drizzle-kit": "^0.20.17",
+    "pg": "^8.11.5",
+    "postcss": "^8.4.38",
+    "tailwindcss": "^3.4.3"
+  }
+}

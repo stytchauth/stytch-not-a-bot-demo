@@ -1,0 +1,48 @@
+{
+  "version": "5",
+  "dialect": "pg",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "5",
+      "when": 1714596272116,
+      "tag": "0000_black_rage",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1714598175192,
+      "tag": "0001_classy_stardust",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1715021863982,
+      "tag": "0002_premium_ink",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "5",
+      "when": 1715023085446,
+      "tag": "0003_unusual_greymalkin",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "5",
+      "when": 1715036196629,
+      "tag": "0004_broad_donald_blake",
+      "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "5",
+      "when": 1716466753419,
+      "tag": "0005_tiresome_klaw",
+      "breakpoints": true
+    }
+  ]
+}
