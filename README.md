@@ -1,14 +1,114 @@
-# Stytch not-a-bot Demo
+# Stytch not-a-bot B2C Demo App
 
 ## Overview
 
-This example application demonstrates how one may use Stytch within a Next.js 13 application using the new [App Router](https://nextjs.org/docs/app/building-your-application/routing#the-app-router). If you'd like to see an example of Stytch with Next.js's Page Router, you can find it [here](https://github.com/stytchauth/stytch-nextjs-example).
+This is a demo application that uses Stytch to authenticate users and generate bot photos using AI to demonstrate the capabilities of Stytch in a real-world application. The application uses Stytch's Email Magic Links and Google OAuth to authenticate users. Once authenticated, users can access the application and see their generated photos, download and share on social media or print.
+
+The application is built with Next.js 13, Tailwind CSS, and TypeScript. It uses Stytch's JavaScript SDK to authenticate users and manage sessions.
+
+The application flow:
+
+1. An app admin messages a photo to a Twilio number set up to receive MMS messages and call the `/api/getAIPhotos` endpoint.
+2. The `/api/getAIPhotos` endpoint calls the Replicate API to generate bot photos and the ImageKit API to store and serve images and replies with a "photo code" to be used after signup to associate a user with a photo.
+3. Users can sign up or log in with Email Magic Links or Google OAuth by visiting the deployed application at https://stytch-not-a-bot.com
+4. After signing up or logging in, users can enter the "photo code" they received to see their generated photos.
+5. Users can download, share on social media, or print their generated collage of photos.
+
+[Twilio](https://www.twilio.com/) is used to receive MMS messages and call the `/api/getAIPhotos` endpoint. [Replicate](https://replicate.com) hosts the [TencentARC/PhotoMaker](https://github.com/TencentARC/PhotoMaker) model to generate bot photos a photo and a prompt. [ImageKit](https://imagekit.io) is used to store and serve images as well as dynamically assemble the collage. [Sentry](https://sentry.io) is used for error tracking. The application is deployed on [Fly.io](https://fly.io). [Neon](https://neon.tech) is used as a Serverless Postgres database for storing data for the application. [Ngrok](https://ngrok.com) is used for local development and testing.
+
+## Twilio
+
+Visit [Twilio](https://www.twilio.com/) and create an account. You will need to set up a Twilio phone number to receive MMS messages. You will also need your Twilio Account SID and Auth Token and update the `.env.local` file with these values:
+
+```
+TWILIO_ACCOUNT_SID=
+TWILIO_AUTH_TOKEN=
+```
+
+## Replicate and tencentarch/photomaker model
+
+Visit [Replicate](https://replicate.com) and create an account. Find the API token in your account settings and update the `.env.local` file with this value:
+
+```
+REPLICATE_API_TOKEN=
+```
+
+## Neon
+
+Visit [Neon](https://neon.tech) and create an account. You will need to create a database and get the database URL and update the `.env.local` file with this value:
+
+```
+DATABASE_URL=
+```
+
+## ImageKit
+
+Visit [ImageKit](https://imagekit.io) and create an account. You will need to get your public key, private key, and URL endpoint and update the `.env.local` file with these values:
+
+```
+IMAGEKIT_PUBLIC_KEY=
+IMAGEKIT_PRIVATE_KEY=
+IMAGEKIT_URL_ENDPOINT=
+```
+
+## Sentry
+
+Visit [Sentry](https://sentry.io) and create an account. You will need to get your DSN and Auth Token and update the `.env.local` file with these values:
+
+```
+SENTRY_DSN=
+SENTRY_AUTH_TOKEN=
+```
+
+## Ngrok
+
+Visit [Ngrok](https://ngrok.com) and create an account. You will need to get your Ngrok host and update the `.env.local` file with this value:
+
+```
+NGROK_HOST=
+```
+
+## Deployment on Fly.io
+
+Visit [Fly.io](https://fly.io) and create an account. You will need to get your Fly.io API token and update the `.env.local` file with this value:
+
+```
+HOSTED_URL=
+```
+
+Install the Fly CLI:
+
+```bash
+curl -L https://fly.io/install.sh | sh
+```
+
+Launch the app on Fly:
+
+```bash
+fly launch
+```
+
+Import secrets to Fly from `.env.local`:
+
+```bash
+fly secrets import < .env.local
+```
+
+Deploy the app:
+
+```bash
+npm run fly:deploy
+```
+
+### Next.js 13 App Router
+
+This example application demonstrates a real-world application using several services including Stytch within a Next.js 13 application using the new [App Router](https://nextjs.org/docs/app/building-your-application/routing#the-app-router). If you'd like to see an example of Stytch with Next.js's Page Router, you can find it [here](https://github.com/stytchauth/stytch-nextjs-example).
 
 In Next.js 13's App Router, you may use both [Client](https://nextjs.org/docs/getting-started/react-essentials#client-components) and [Server](https://nextjs.org/docs/getting-started/react-essentials#server-components) components. **This example app primarily uses Client components, however you can see an example of a Server component in `/src/components/Authenticate.js`**. Our [Next.js SDK](https://stytch.com/docs/sdks/javascript-sdk) is compatible with Client components, so anywhere you use it, ensure that you include `'use client'` at the top of the component. If you'd like to use Server components, you may use our [Node Backend SDK](https://www.npmjs.com/package/stytch) to power your authentication flow.
 
-This application features Email Magic Links, Google OAuth, and SMS OTP authentication. You can use this application's source code as a learning resource, or use it as a jumping off point for your own project. We are excited to see what you build with Stytch!
+This application features Email Magic Links and Google OAuth. You can use this application's source code as a learning resource, or use it as a jumping off point for your own project. We are excited to see what you build with Stytch!
 
-## Set up
+## Stytch Setup
 
 Follow the steps below to get this application fully functional and running using your own Stytch credentials.
 
@@ -29,10 +129,10 @@ Follow the steps below to get this application fully functional and running usin
 In your terminal clone the project and install dependencies:
 
 ```bash
-git clone https://github.com/cal-stytch/stytch-nextjs13-example.git
-cd stytch-nextjs13-example
-# Install dependencies, using pnpm.
-pnpm i
+git clone https://github.com/stytch/stytch-not-a-bot-demo.git
+cd stytch-not-a-bot-demo
+# Install dependencies, using npm.
+npm i
 ```
 
 Next, create `.env.local` file by running the command below which copies the contents of `.env.template`.
