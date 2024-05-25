@@ -8,6 +8,7 @@ import {
 } from "@headlessui/react";
 import { EllipsisVerticalIcon } from "@heroicons/react/20/solid";
 import { Fragment } from "react";
+import { adminDeletePhotoAction } from "../app/admin/actions";
 function classNames(...classes: any[]) {
   return classes.filter(Boolean).join(" ");
 }
@@ -98,15 +99,17 @@ export default function AdminList({ photos }: { photos: any }) {
                         <MenuItems className="absolute right-0 z-10 mt-2 w-18 origin-top-right bg-red-700 rounded-md py-2 shadow-lg ring-1 ring-gray-900/5 focus:outline-none">
                           <MenuItem>
                             {({ active }) => (
-                              <a
-                                href="#"
+                              <button
+                                onClick={() => {
+                                  adminDeletePhotoAction(p.id);
+                                }}
                                 className={classNames(
                                   active ? "bg-gray-50" : "",
                                   "block px-3 py-1 text-sm leading-6 text-white bg-red-700",
                                 )}
                               >
                                 DELETE
-                              </a>
+                              </button>
                             )}
                           </MenuItem>
                         </MenuItems>

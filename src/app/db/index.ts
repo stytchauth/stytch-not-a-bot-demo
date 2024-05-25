@@ -145,3 +145,7 @@ export async function getUserCode(userId: Photo["user_id"]): Promise<Photo> {
 
   return result.at(0)!;
 }
+
+export async function deletePhoto(photoId: Photo["id"]) {
+  await db.delete(photos).where(eq(photos.id, photoId));
+}
