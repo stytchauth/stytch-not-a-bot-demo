@@ -11,6 +11,7 @@ import { getDomainFromWindow } from "../../lib/urlUtils";
  * https://stytch.com/docs/sdks/javascript-sdk#ui-configs.
  */
 const Login = () => {
+  const domain = getDomainFromWindow();
   const styles = {
     colors: {
       primary: "#FFFFFF",
@@ -52,15 +53,15 @@ const Login = () => {
   const config = {
     products: [Products.oauth, Products.emailMagicLinks],
     emailMagicLinksOptions: {
-      loginRedirectURL: getDomainFromWindow() + "/authenticate",
+      loginRedirectURL: `${domain}/authenticate`,
       loginExpirationMinutes: 60,
-      signupRedirectURL: getDomainFromWindow() + "/authenticate",
+      signupRedirectURL: `${domain}/authenticate`,
       signupExpirationMinutes: 60,
     },
     oauthOptions: {
       providers: [{ type: OAuthProviders.Google }],
-      loginRedirectURL: getDomainFromWindow() + "/authenticate",
-      signupRedirectURL: getDomainFromWindow() + "/authenticate",
+      loginRedirectURL: `${domain}/authenticate`,
+      signupRedirectURL: `${domain}/authenticate`,
     },
   };
 
