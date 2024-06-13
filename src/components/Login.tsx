@@ -1,7 +1,7 @@
 "use client";
 
 import { StytchLogin } from "@stytch/nextjs";
-import { Products } from "@stytch/vanilla-js";
+import { OAuthProviders, Products } from "@stytch/vanilla-js";
 import { getDomainFromWindow } from "../../lib/urlUtils";
 
 /*
@@ -58,11 +58,11 @@ const Login = () => {
       signupExpirationMinutes: 60,
     },
     oauthOptions: {
-      providers: [{ type: "google" }],
+      providers: [{ type: OAuthProviders.Google }],
       loginRedirectURL: getDomainFromWindow() + "/authenticate",
       signupRedirectURL: getDomainFromWindow() + "/authenticate",
     },
-  } as Parameters<typeof StytchLogin>[0]["config"];
+  };
 
   return <StytchLogin config={config} styles={styles} />;
 };
