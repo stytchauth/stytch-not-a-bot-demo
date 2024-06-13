@@ -1,9 +1,6 @@
 import { Metadata, ResolvingMetadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-const BASE_URL = process.env.HOSTED_URL
-  ? process.env.HOSTED_URL
-  : "http://localhost:3000";
 
 export async function generateMetadata(
   { params }: { params: { code: string } },
