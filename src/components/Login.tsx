@@ -1,7 +1,7 @@
 "use client";
 
 import { StytchLogin } from "@stytch/nextjs";
-import { Products } from "@stytch/vanilla-js";
+import { OAuthProviders, Products } from "@stytch/vanilla-js";
 import { getDomainFromWindow } from "../../lib/urlUtils";
 
 /*
@@ -11,6 +11,7 @@ import { getDomainFromWindow } from "../../lib/urlUtils";
  * https://stytch.com/docs/sdks/javascript-sdk#ui-configs.
  */
 const Login = () => {
+  const domain = getDomainFromWindow();
   const styles = {
     colors: {
       primary: "#FFFFFF",
@@ -52,17 +53,17 @@ const Login = () => {
   const config = {
     products: [Products.oauth, Products.emailMagicLinks],
     emailMagicLinksOptions: {
-      loginRedirectURL: getDomainFromWindow() + "/authenticate",
+      loginRedirectURL: `${domain}/authenticate`,
       loginExpirationMinutes: 60,
-      signupRedirectURL: getDomainFromWindow() + "/authenticate",
+      signupRedirectURL: `${domain}/authenticate`,
       signupExpirationMinutes: 60,
     },
     oauthOptions: {
-      providers: [{ type: "google" }],
-      loginRedirectURL: getDomainFromWindow() + "/authenticate",
-      signupRedirectURL: getDomainFromWindow() + "/authenticate",
+      providers: [{ type: OAuthProviders.Google }],
+      loginRedirectURL: `${domain}/authenticate`,
+      signupRedirectURL: `${domain}/authenticate`,
     },
-  } as Parameters<typeof StytchLogin>[0]["config"];
+  };
 
   return <StytchLogin config={config} styles={styles} />;
 };
