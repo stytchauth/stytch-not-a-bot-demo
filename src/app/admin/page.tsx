@@ -2,8 +2,10 @@ import AdminList from "@/src/components/AdminList";
 import Image from "next/image";
 import Link from "next/link";
 import { getAllPhotos } from "../db";
+import { getStytchAdminUser } from "../shared-actions";
 
 export default async function Admin() {
+  await getStytchAdminUser(); // check for admin user and redirect if not
   const photos = await getAllPhotos();
 
   return (
