@@ -29,8 +29,7 @@ export async function getStytchUser() {
 export async function getStytchAdminUser() {
   const user = await getStytchUser();
 
-  if (!user && !isStytchAdmin(user)) {
-    console.log("email", user.emails[0].email);
+  if (!user || !isStytchAdmin(user)) {
     redirect("/");
   }
 
