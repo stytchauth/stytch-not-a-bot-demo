@@ -4,6 +4,7 @@ import Login from "@/src/components/Login";
 import { useStytchUser } from "@stytch/nextjs";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
+import { redirectToProfileOrGetCode } from "./utils";
 
 export default function LoginPage() {
   const { user, isInitialized } = useStytchUser();
@@ -14,13 +15,7 @@ export default function LoginPage() {
   // /profile if the user is associated with a photo
   // /get-code if the user is not yet associated with a photo
   useEffect(() => {
-    if (isInitialized && user) {
-      if (user.trusted_metadata?.hasAIImage) {
-        router.replace("/profile");
-      } else {
-        router.replace("/get-code");
-      }
-    }
+    redirectToProfileOrGetCode(isInitialized, user, router);
   }, [user, isInitialized, router]);
 
   return (

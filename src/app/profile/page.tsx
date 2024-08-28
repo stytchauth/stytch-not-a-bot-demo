@@ -6,6 +6,7 @@ import Header from "@/src/components/Header";
 import SocialMenu from "@/src/components/SocialMenu";
 import { Metadata, ResolvingMetadata } from "next";
 import Link from "next/link";
+import { stytchFingerprintLookup } from "../shared-actions";
 import { isMobileUserAgent } from "../utils";
 import { getCollageUrlForUser, getPhotosForUser } from "./actions";
 
@@ -28,7 +29,11 @@ export async function generateMetadata(
   };
 }
 
-export default async function ProfilePage() {
+export default async function ProfilePage({
+  searchParams,
+}: {
+  searchParams: { [key: string]: string | string[] | undefined };
+}) {
   const headersList = headers();
   const isMobile = isMobileUserAgent(headersList.get("user-agent"));
   const photos = await getPhotosForUser(isMobile);
@@ -37,6 +42,13 @@ export default async function ProfilePage() {
       collagePageUrl: string;
       collageImageUrl: string;
     };
+
+  const telemetryId = searchParams.telemetryId as string | undefined;
+  const lookupResult = await stytchFingerprintLookup({
+    telemetry_id: telemetryId!,
+  });
+
+  console.log("Lookup result:", lookupResult);
 
   return (
     <>

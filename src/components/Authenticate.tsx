@@ -3,6 +3,7 @@
 import { useStytch, useStytchUser } from "@stytch/nextjs";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect } from "react";
+import { redirectToProfileOrGetCode } from "../app/utils";
 
 const OAUTH_TOKEN = "oauth";
 const MAGIC_LINKS_TOKEN = "magic_links";
@@ -47,11 +48,7 @@ const Authenticate = () => {
     // /profile if the user is associated with a photo
     // /get-code if the user is not yet associated with a photo
     if (user) {
-      if (user.trusted_metadata?.hasAIImage) {
-        router.replace("/profile");
-      } else {
-        router.replace("/get-code");
-      }
+      redirectToProfileOrGetCode(isInitialized, user, router);
     }
   }, [router, user, isInitialized]);
 

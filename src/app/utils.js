@@ -1,3 +1,5 @@
+const public_token = process.env.NEXT_PUBLIC_STYTCH_PUBLIC_TOKEN;
+
 const replicatePrompts = [
   "A photograph of a technologist img in the 1920s.",
   "A photograph of a technologist img in the 1930s.",
@@ -110,6 +112,25 @@ function updateUrlWithPhotoWidth(url, width) {
   return urlParts.join("/");
 }
 
+const getTelemetryId = async () => {
+  const telemetry_id = await GetTelemetryID(public_token);
+  console.log("TID:", telemetry_id);
+
+  return telemetry_id;
+};
+
+const redirectToProfileOrGetCode = async (isInitialized, user, router) => {
+  if (isInitialized && user) {
+    if (user.trusted_metadata?.hasAIImage) {
+      const telemetryId = await getTelemetryId();
+      console.log("telemetryId", telemetryId);
+      router.replace("/profile?telemetryId=" + telemetryId);
+    } else {
+      router.replace("/get-code");
+    }
+  }
+};
+
 module.exports = {
   replicatePrompts,
   buildCollageUrl,
@@ -119,4 +140,6 @@ module.exports = {
   genImageKitFolder,
   isMobileUserAgent,
   updateUrlWithPhotoWidth,
+  getTelemetryId,
+  redirectToProfileOrGetCode,
 };
