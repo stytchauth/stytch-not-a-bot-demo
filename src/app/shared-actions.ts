@@ -80,5 +80,5 @@ export const stytchFingerprintLookup = async ({
 
   const data = await response.json();
   const { verdict } = data;
-  return { verdictAction: verdict.action };
+  return { verdictAction: verdict?.action };
 };

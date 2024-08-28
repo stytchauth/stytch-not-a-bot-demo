@@ -1,12 +1,12 @@
 import { headers } from "next/headers";
 import Image from "next/image";
 
+import DFPBanner from "@/src/components/DFPBanner";
 import Footer from "@/src/components/Footer";
 import Header from "@/src/components/Header";
 import SocialMenu from "@/src/components/SocialMenu";
 import { Metadata, ResolvingMetadata } from "next";
 import Link from "next/link";
-import { stytchFingerprintLookup } from "../shared-actions";
 import { isMobileUserAgent } from "../utils";
 import { getCollageUrlForUser, getPhotosForUser } from "./actions";
 
@@ -29,11 +29,7 @@ export async function generateMetadata(
   };
 }
 
-export default async function ProfilePage({
-  searchParams,
-}: {
-  searchParams: { [key: string]: string | string[] | undefined };
-}) {
+export default async function ProfilePage() {
   const headersList = headers();
   const isMobile = isMobileUserAgent(headersList.get("user-agent"));
   const photos = await getPhotosForUser(isMobile);
@@ -43,13 +39,6 @@ export default async function ProfilePage({
       collageImageUrl: string;
     };
 
-  const telemetryId = searchParams.telemetryId as string | undefined;
-  const lookupResult = await stytchFingerprintLookup({
-    telemetry_id: telemetryId!,
-  });
-
-  console.log("Lookup result:", lookupResult);
-
   return (
     <>
       <Header />
@@ -57,6 +46,7 @@ export default async function ProfilePage({
         <div className="mx-auto max-w-full px-6 lg:px-8">
           <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-3">
             <div>
+              <DFPBanner />
               <h2 className="text-4xl font-bold tracking-tight text-neon lg:text-[65px] lg:leading-[65px]">
                 Meet your AI doppelgängers
               </h2>

@@ -114,17 +114,13 @@ function updateUrlWithPhotoWidth(url, width) {
 
 const getTelemetryId = async () => {
   const telemetry_id = await GetTelemetryID(public_token);
-  console.log("TID:", telemetry_id);
-
   return telemetry_id;
 };
 
 const redirectToProfileOrGetCode = async (isInitialized, user, router) => {
   if (isInitialized && user) {
     if (user.trusted_metadata?.hasAIImage) {
-      const telemetryId = await getTelemetryId();
-      console.log("telemetryId", telemetryId);
-      router.replace("/profile?telemetryId=" + telemetryId);
+      router.replace("/profile");
     } else {
       router.replace("/get-code");
     }
