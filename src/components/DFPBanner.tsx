@@ -9,7 +9,7 @@ export default function DFPBanner() {
         </p>
         <Link
           className="flex gap-1.5 items-center self-stretch my-auto font-bold text-white rounded-lg"
-          href="https://stytch.com/blog/application-security-in-the-age-of-ai/"
+          href="https://stytch.com/docs/fraud/guides/device-fingerprinting"
           target="_blank"
         >
           <span className="self-stretch my-auto bg-blend-normal whitespace-nowrap">
