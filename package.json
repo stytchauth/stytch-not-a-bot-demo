@@ -15,7 +15,7 @@
     "@headlessui/react": "^2.0.3",
     "@heroicons/react": "^2.1.3",
     "@neondatabase/serverless": "^0.9.1",
-    "@sentry/nextjs": "^7.114.0",
+    "@sentry/nextjs": "^8.32.0",
     "@stytch/nextjs": "^19.0.0",
     "@stytch/vanilla-js": "^4.11.0",
     "@types/node": "20.12.7",
