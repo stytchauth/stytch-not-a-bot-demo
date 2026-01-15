@@ -34,7 +34,7 @@
     "react": "18.3.1",
     "react-dom": "18.3.1",
     "replicate": "^0.29.1",
-    "stytch": "^10.15.1",
+    "stytch": "^12.43.1",
     "typescript": "5.4.5"
   },
   "devDependencies": {
